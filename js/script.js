@@ -18,7 +18,12 @@ showTime();
 /* Slider */
 addBackgroundImage(minSliderIndex, maxSliderIndex, currentTimeOfDay);
 /* Wether */
-getWeather(city.value);
+
+if(localStorage.getItem('city') == null || localStorage.getItem('city') == '') {
+    getWeather('Minsk');
+    city.value = 'Minsk'
+} else getWeather(city.value);
+
 /* Random quote */
 getRandomQuote();
 /* Audio  */

@@ -15,8 +15,8 @@ audio.src = playList[currentAudio].src;
 export function playAudio() {
     if(!isPlay) {
         audio.play();
-        isPlay = true;
         changePlayListItem(currentAudio);
+        isPlay = true;
     } else {
         audio.pause();
         isPlay = false;
