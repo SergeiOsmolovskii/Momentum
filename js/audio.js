@@ -12,15 +12,27 @@ let currentAudio = 0;
 
 audio.src = playList[currentAudio].src;
 
+playList.forEach(item => {
+    const li = document.createElement('li');
+    li.classList.add('play-item');
+    li.textContent = item.title;
+    playListBlock.append(li); 
+})
+
+let playListLi = document.querySelectorAll('.play-item');
+
 export function playAudio() {
     if(!isPlay) {
         audio.play();
-        changePlayListItem(currentAudio);
         isPlay = true;
     } else {
         audio.pause();
         isPlay = false;
     }
+    changePlayListItem(currentAudio);
+    audio.onended = function () {
+        playNext();
+    };
 }
 
 function toggleBtn() {
@@ -34,33 +46,26 @@ function playCurrentAudio() {
     playAudio();
 }
 
-playList.forEach(item => {
-    const li = document.createElement('li');
-    li.classList.add('play-item');
-    li.textContent = item.title;
-    playListBlock.append(li); 
-})
-
-let playListLi = document.querySelectorAll('.play-item');
-
 function changePlayListItem(currentAudio) {
     playListLi.forEach((item, index) => {
-        if(index == currentAudio) item.classList.toggle('item-active')
+        if(index == currentAudio) item.classList.add('item-active')
         else item.classList.remove('item-active');
     }) 
 }
 
-playBtn.addEventListener('click', playAudio);
-playBtn.addEventListener('click', toggleBtn);
-
-playPrevBtn.addEventListener('click', () => {
+function playPrev() {
     currentAudio--;
     if(currentAudio < 0) currentAudio = playList.length - 1; 
-    playCurrentAudio()
-})
+    playCurrentAudio();
+}
 
-playNextBtn.addEventListener('click', () => {
+function playNext() {
     currentAudio++;
     if(currentAudio > playList.length - 1) currentAudio = 0;
     playCurrentAudio()
-})
+}
+
+playBtn.addEventListener('click', playAudio);
+playBtn.addEventListener('click', toggleBtn);
+playPrevBtn.addEventListener('click', playPrev)
+playNextBtn.addEventListener('click', playNext);
