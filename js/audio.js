@@ -48,7 +48,7 @@ function playCurrentAudio() {
 
 function changePlayListItem(currentAudio) {
     playListLi.forEach((item, index) => {
-        if(index == currentAudio) item.classList.add('item-active')
+        if(index == currentAudio) item.classList.add('item-active');
         else item.classList.remove('item-active');
     }) 
 }
@@ -62,10 +62,10 @@ function playPrev() {
 function playNext() {
     currentAudio++;
     if(currentAudio > playList.length - 1) currentAudio = 0;
-    playCurrentAudio()
+    playCurrentAudio();
 }
 
 playBtn.addEventListener('click', playAudio);
 playBtn.addEventListener('click', toggleBtn);
-playPrevBtn.addEventListener('click', playPrev)
+playPrevBtn.addEventListener('click', playPrev);
 playNextBtn.addEventListener('click', playNext);

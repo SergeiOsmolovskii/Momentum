@@ -1,4 +1,3 @@
-//import playList from './playList.js';
 import {showTime, currentTimeOfDay} from './time.js';
 import getWeather from './wether.js';
 import getRandomQuote from './quote.js';
@@ -16,12 +15,12 @@ if (localStorage.getItem('city')) city.value = localStorage.getItem('city');
 /* Time */
 showTime();
 /* Slider */
-addBackgroundImage(minSliderIndex, maxSliderIndex, currentTimeOfDay);
+addBackgroundImage(minSliderIndex, maxSliderIndex);
 /* Wether */
 
 if(localStorage.getItem('city') == null || localStorage.getItem('city') == '') {
     getWeather('Minsk');
-    city.value = 'Minsk'
+    city.value = 'Minsk';
 } else getWeather(city.value);
 
 /* Random quote */

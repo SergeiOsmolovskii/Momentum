@@ -16,7 +16,7 @@ function setBackgroundImage() {
     }; 
   }
 
-export function addBackgroundImage(minSliderIndex, maxSliderIndex, currentTimeOfDay) {
+export function addBackgroundImage(minSliderIndex, maxSliderIndex) {
     function getRandomArbitrary(minSliderIndex, maxSliderIndex) {
         let min = Math.ceil(minSliderIndex);
         let max = Math.floor(maxSliderIndex);
