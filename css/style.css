@@ -3,6 +3,10 @@
   src: url("../assets/fonts/Arial-MT.woff"); /* Путь к файлу со шрифтом */
  }
 
+:root {
+  --first-track-name: 'Aqua Caelestis';
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,6 +25,15 @@ body {
   transition: background-image 1s ease-in-out;
 }
 
+input {
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  height: 5px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -35,7 +48,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 120px;
+  max-width: 700px;
   margin-bottom: 28px;
 }
 
@@ -71,7 +84,8 @@ body {
 
 .player-icon,
 .slider-icon,
-.change-quote {
+.change-quote,
+.sound-button {
   width: 32px;
   height: 32px;
   background-size: 32px 32px;
@@ -87,13 +101,15 @@ body {
 
 .player-icon:hover,
 .slider-icon:hover,
-.change-quote:hover {
+.change-quote:hover,
+.sound-button:hover {
   opacity: 1;
 }
 
 .player-icon:active,
 .slider-icon:active,
-.change-quote:active {
+.change-quote:active,
+.sound-button:active {
   border: 0;
   outline: 0;  
   transform: scale(1.1);
@@ -116,6 +132,65 @@ body {
 
 .play-next {
   background-image: url("../assets/svg/play-next.svg");
+}
+
+.sound-button, .sound-mute {
+  width: 18px;
+  height: 15px;
+  margin: 0px 20px;
+  background-size: cover;
+}
+
+.sound-button {
+  background-image: url("../assets/svg/sound_button.svg");
+}
+
+.sound-mute {
+  background-image: url("../assets/svg/sound_mute.svg");
+}
+
+.sound-control {
+  display: flex;
+  margin-left: 15px;
+  padding: 0 30px;
+  align-items: center;
+}
+
+.sound-control p:first-child {
+  margin: auto 20px auto 0px;
+}
+
+.sound-control p {
+  margin: auto 0px auto 20px;
+}
+
+.audio-length-control {
+  position: relative;
+  width: 220px;
+  text-align: center;
+  background: linear-gradient(to right, #c5b358 0%, #c5b358 47%, #C4C4C4 40%, #C4C4C4 100%);
+}
+
+.sound-bar-progress {
+  width: 80px;
+  color: #c5b358;
+  background: linear-gradient(to right, #c5b358 0%, #c5b358 47%, #C4C4C4 40%, #C4C4C4 100%);
+}
+
+.audio-length-control::before {
+  position: absolute;
+  content: var(--first-track-name);
+  width: 100%;
+  top: -25px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.audio-length-control::-webkit-slider-thumb,
+.sound-bar-progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 1px;
+    height: 1px;
 }
 
 .weather {
